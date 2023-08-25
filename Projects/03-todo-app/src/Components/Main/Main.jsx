@@ -5,7 +5,8 @@ const defaultTodo = [
   {text: 'Dominar React', completed: false},
   {text: 'Dominar TypeScript', completed: false},
   {text: 'Dominar Tailwind', completed: true},
-  {text: 'Dominar Angular', completed: false}
+  {text: 'Dominar Angular', completed: false},
+  {text: 'Toy probando la anchura deto', completed: false},
 ]
 
 export function Main() {
