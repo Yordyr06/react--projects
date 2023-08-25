@@ -1,4 +1,4 @@
-export function Items(props) {
+export function Task(props) {
   return (
     <li>
       <span>x</span>
