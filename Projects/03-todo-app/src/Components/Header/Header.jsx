@@ -1,7 +1,9 @@
+import { React } from 'react'
 import { Counter } from './Counter'
 import { Search } from './Search'
 
 export function Header() {
+
   return (
     <header className="
       w-full flex flex-col text-center justify-center gap-4 my-8 
