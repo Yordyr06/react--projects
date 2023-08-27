@@ -1,9 +1,13 @@
-import { React } from 'react'
 import { Counter } from './Counter'
 import { Search } from './Search'
 
-export function Header() {
-
+export function Header({
+  completed,
+  totalTasks,
+  value,
+  setFilter
+}) {
+  
   return (
     <header className="
       w-full flex flex-col text-center justify-center gap-4 my-8 
@@ -12,8 +16,15 @@ export function Header() {
         text-3xl font-bold 
       ">To Do App</h1>
 
-      <Counter completed={1} total={4}/>
-      <Search />
+      <Counter
+        completed={completed}
+        totalTasks={totalTasks}
+      />
+
+      <Search 
+        value={value}
+        setFilter={setFilter}
+      />
     </header>
   )
 }
