@@ -1,7 +1,7 @@
 export function Task(props) {
   const isCompleted = () => {
-    // props.completed ? props.completed = false : props.completed = true
-    console.log(props.completed)
+  // props.completed ? props.completed = false : props.completed = true
+  console.log(props.completed)
   }
   
   return (
@@ -18,7 +18,8 @@ export function Task(props) {
       </span>
       <p className={`
         ${props.completed ? "line-through" : null }
-        `}>{props.text}</p>
+        `}>{props.text}
+      </p>
       <span className="
         cursor-pointer text-gray-500 hover:text-red-700  top-0
       ">

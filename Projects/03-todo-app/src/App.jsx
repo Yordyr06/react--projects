@@ -9,7 +9,7 @@ const defaultTasks = [
   {text: 'Dominar TypeScript', completed:false},
   {text: 'Dominar Tailwind', completed:true},
   {text: 'Dominar Angular', completed:false},
-  {text: 'Toy probando la anchura deto', completed:false},
+  {text: 'Toy probando la anchura deto', completed:true},
 ]
 
 function App() {
@@ -21,6 +21,12 @@ function App() {
   ).length
   const totalTasks = tasks.length
 
+  const getTasks = tasks.filter(
+    task => ( 
+      task.text.toLowerCase()
+      .includes(value.toLowerCase())
+    ))
+
   return (
     <>
       <Header
@@ -30,9 +36,10 @@ function App() {
         setFilter={setFilter}
       />
 
-      <Main 
+      <Main
         tasks={tasks}
         setTasks={setTasks}
+        getTasks={getTasks}
       />
 
       <Button />

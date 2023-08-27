@@ -1,26 +1,22 @@
 import { List } from './List'
 import { Task } from './Tasks'
 
-const defaultTodo = [
-  {text: 'Dominar React', completed:false},
-  {text: 'Dominar TypeScript', completed:false},
-  {text: 'Dominar Tailwind', completed:true},
-  {text: 'Dominar Angular', completed:false},
-  {text: 'Toy probando la anchura deto', completed:false},
-]
-
-export function Main() {
+export function Main({
+  tasks,
+  setTasks,
+  getTasks
+}) {
   return(
     <main className="
       w-full mt-5 
     ">
       <section>
         <List>
-          {defaultTodo.map(todo => (
+          {getTasks.map(task => (
             <Task 
-              key={todo.text}
-              text={todo.text}
-              completed={todo.completed}
+              key={task.text}
+              text={task.text}
+              completed={task.completed}
             />
           ))}
         </List>

@@ -1,8 +1,4 @@
-import React from "react"
-
-export function Search() {
-  const [value, setFilter] = React.useState('')
-
+export function Search({ value, setFilter }) {
   return (
     <div className="
       flex gap-3 bg-transparent justify-evenly border-2 border-sky-500 
