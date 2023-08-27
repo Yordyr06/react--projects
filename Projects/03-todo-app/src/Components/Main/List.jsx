@@ -1,7 +1,7 @@
 export function List({ children }) {
   return (
     <ul className="
-      grid m-auto px-4 grid-cols-2 auto-rows-fr justify-center gap-3
+      flex flex-col m-auto px-4 justify-center gap-2
       justify-items-center place-items-center hyphens-auto
     ">
       {children}
