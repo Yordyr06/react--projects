@@ -27,6 +27,13 @@ function App() {
       .includes(value.toLowerCase())
     ))
 
+  const successTask = (text) => {
+    const updateTasks = [...tasks]
+    const index = updateTasks.findIndex(task => task.text === text)
+    updateTasks[index].completed = true
+    setTasks(updateTasks)
+  }
+
   return (
     <>
       <Header
@@ -40,6 +47,7 @@ function App() {
         tasks={tasks}
         setTasks={setTasks}
         getTasks={getTasks}
+        successTask={successTask}
       />
 
       <Button />

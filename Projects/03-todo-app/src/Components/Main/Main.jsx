@@ -3,8 +3,8 @@ import { Task } from './Tasks'
 
 export function Main({
   tasks,
-  setTasks,
-  getTasks
+  getTasks,
+  successTask
 }) {
   return(
     <main className="
@@ -17,6 +17,7 @@ export function Main({
               key={task.text}
               text={task.text}
               completed={task.completed}
+              successTask={() => successTask(tasks.text)}
             />
           ))}
         </List>

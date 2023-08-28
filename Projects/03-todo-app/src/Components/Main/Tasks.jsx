@@ -1,14 +1,10 @@
 export function Task(props) {
-  const isCompleted = () => {
-  // props.completed ? props.completed = false : props.completed = true
-  console.log(props.completed)
-  }
   
   return (
     <li className="
       flex flex-row list-none px-3 py-2 justify-between items-center w-full h-auto bg-slate-950 rounded-full text-center gap-2 tracking-tight font-normal leading-5 border-2 border-sky-500 text-slate-100
     ">
-      <span onClick={isCompleted} className={`
+      <span onChange={props.successTasks} className={`
         ${props.completed ? "text-green-700" : "text-gray-500"}
         cursor-pointer hover:text-green-700
       `}>
@@ -17,7 +13,7 @@ export function Task(props) {
         </svg>
       </span>
       <p className={`
-        ${props.completed ? "line-through" : null }
+          ${props.completed ? "line-through" : null }
         `}>{props.text}
       </p>
       <span className="
