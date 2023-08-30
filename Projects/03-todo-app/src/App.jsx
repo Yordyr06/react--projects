@@ -30,8 +30,21 @@ function App() {
   const successTask = (text) => {
     const updateTasks = [...tasks]
     const index = updateTasks.findIndex(
+      (task) => task.text === text)
+
+    if (index !== -1) {
+      updateTasks[index].completed = true
+      setTasks(updateTasks)
+    } else {
+      console.error(`Task with text "${text} not found"`)
+    }
+  }
+
+  const deleteTask = (text) => {
+    const updateTasks = [...tasks]
+    const index = updateTasks.findIndex(
       (task) => task.text == text)
-    updateTasks[index].completed = true
+    updateTasks.splice(index, 1)
     setTasks(updateTasks)
   }
 
@@ -49,6 +62,7 @@ function App() {
         setTasks={setTasks}
         getTasks={getTasks}
         successTask={successTask}
+        deleteTask={deleteTask}
       />
 
       <Button />
