@@ -3,6 +3,7 @@ import { Task } from './Tasks'
 
 export function Main({
   tasks,
+  setTasks,
   getTasks,
   successTask
 }) {
@@ -17,9 +18,10 @@ export function Main({
               key={task.text}
               text={task.text}
               completed={task.completed}
+              setTasks={setTasks}
               successTask={() => successTask(tasks.text)}
             />
-          ))}
+          ))} 
         </List>
       </section>
     </main>

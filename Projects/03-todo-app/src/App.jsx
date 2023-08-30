@@ -29,7 +29,8 @@ function App() {
 
   const successTask = (text) => {
     const updateTasks = [...tasks]
-    const index = updateTasks.findIndex(task => task.text === text)
+    const index = updateTasks.findIndex(
+      (task) => task.text == text)
     updateTasks[index].completed = true
     setTasks(updateTasks)
   }

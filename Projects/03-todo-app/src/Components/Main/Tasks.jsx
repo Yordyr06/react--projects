@@ -1,10 +1,9 @@
 export function Task(props) {
-  
   return (
     <li className="
       flex flex-row list-none px-3 py-2 justify-between items-center w-full h-auto bg-slate-950 rounded-full text-center gap-2 tracking-tight font-normal leading-5 border-2 border-sky-500 text-slate-100
     ">
-      <span onChange={props.successTasks} className={`
+      <span onClick={props.successTask} className={`
         ${props.completed ? "text-green-700" : "text-gray-500"}
         cursor-pointer hover:text-green-700
       `}>
