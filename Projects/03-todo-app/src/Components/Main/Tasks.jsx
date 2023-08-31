@@ -10,7 +10,6 @@ export function Tasks({
     ">
       {
         getTasks.map(task => (
-          console.log(task),
           <li
             key={task.text}
             className="
