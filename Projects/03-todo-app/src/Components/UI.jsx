@@ -3,6 +3,8 @@ import { Main } from './Main/Main'
 import { Button } from './Button/Button'
 
 export function UI({
+  loading,
+  error,
   tasksCompleted,
   totalTasks,
   value,
@@ -23,6 +25,8 @@ export function UI({
       />
 
       <Main
+        loading={loading}
+        error={error}
         tasks={tasks}
         setTasks={setTasks}
         getTasks={getTasks}

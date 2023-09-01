@@ -3,7 +3,12 @@ import { useStorage } from './Hooks/useStorage'
 import { UI } from './Components/UI'
 
 export function App() {
-  const [ tasks, setTasks ] = useStorage('TASK_V1', [])
+  const { 
+    data: tasks, 
+    setStorage: setTasks,
+    loading,
+    error 
+  }  = useStorage('TASK_V1', [])
   const [ value, setFilter ] = useState('')
 
   const tasksCompleted = tasks.filter(
@@ -48,6 +53,8 @@ export function App() {
 
   return (
     <UI 
+      loading={loading}
+      error={error}
       tasksCompleted={tasksCompleted}
       totalTasks={totalTasks}
       value={value}
