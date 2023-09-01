@@ -1,31 +1,8 @@
 import { useState } from 'react'
-import { Header } from './Components/Header/Header'
-import { Main } from './Components/Main/Main'
-import { Button } from './Components/Button'
-import './App.css'
+import { useStorage } from './Hooks/useStorage'
+import { UI } from './Components/UI'
 
-const useStorage = (storage, initialStorage) => {
-  let dataList 
-  const getStorage = localStorage.getItem(storage)
-
-  if(getStorage) {
-    dataList = JSON.parse(getStorage)
-  } else {
-    localStorage.setItem(getStorage, JSON.stringify(initialStorage)),
-    dataList = initialStorage
-  }
-
-  const [data, setData] = useState(dataList)
-
-  const setStorage = (newStorage) => {
-    localStorage.setItem(getStorage, JSON.stringify(newStorage))
-    setData(newStorage)
-  }
-
-  return [ data, setStorage ]
-}
-
-function App() {
+export function App() {
   const [ tasks, setTasks ] = useStorage('TASK_V1', [])
   const [ value, setFilter ] = useState('')
 
@@ -70,25 +47,16 @@ function App() {
   }
 
   return (
-    <>
-      <Header
-        completed={tasksCompleted}
-        totalTasks={totalTasks}
-        value={value}
-        setFilter={setFilter}
-      />
-
-      <Main
-        tasks={tasks}
-        setTasks={setTasks}
-        getTasks={getTasks}
-        successTask={successTask}
-        deleteTask={deleteTask}
-      />
-
-      <Button />
-    </>
+    <UI 
+      tasksCompleted={tasksCompleted}
+      totalTasks={totalTasks}
+      value={value}
+      setFilter={setFilter}
+      tasks={tasks}
+      setTasks={setTasks}
+      getTasks={getTasks}
+      successTask={successTask}
+      deleteTask={deleteTask}
+    />
   )
 }
-
-export default App
