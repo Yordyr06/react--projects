@@ -4,27 +4,30 @@ import { Main } from './Components/Main/Main'
 import { Button } from './Components/Button'
 import './App.css'
 
-// const defaultTasks = [
-//   {text: 'Dominar React', completed:false},
-//   {text: 'Dominar TypeScript', completed:false},
-//   {text: 'Dominar Tailwind', completed:true},
-//   {text: 'Dominar Angular', completed:false},
-//   {text: 'Toy probando la anchura deto', completed:true},
-// ]
+const useStorage = (storage, initialStorage) => {
+  let dataList 
+  const getStorage = localStorage.getItem(storage)
+
+  if(getStorage) {
+    dataList = JSON.parse(getStorage)
+  } else {
+    localStorage.setItem(getStorage, JSON.stringify(initialStorage)),
+    dataList = initialStorage
+  }
+
+  const [data, setData] = useState(dataList)
+
+  const setStorage = (newStorage) => {
+    localStorage.setItem(getStorage, JSON.stringify(newStorage))
+    setData(newStorage)
+  }
+
+  return [ data, setStorage ]
+}
 
 function App() {
-  let taskList 
-  const storage = localStorage.getItem('TASK_V1')
-
-  if(storage) {
-    taskList = JSON.parse(storage)
-  } else {
-    localStorage.setItem('TASK_V1', JSON.stringify([])),
-    taskList = []
-  }
-  
-  const [tasks, setTasks] = useState(taskList)
-  const [value, setFilter] = useState('')
+  const [ tasks, setTasks ] = useStorage('TASK_V1', [])
+  const [ value, setFilter ] = useState('')
 
   const tasksCompleted = tasks.filter(
     task => !!task.completed 
@@ -35,21 +38,18 @@ function App() {
     task => ( 
       task.text.toLowerCase()
       .includes(value.toLowerCase())
-    ))
-
-  const setStorage = (newStorage) => {
-    localStorage.setItem('TASK_V1', JSON.stringify(newStorage))
-    setTasks(newStorage)
-  }
+    )
+  )
   
   const successTask = (text) => {
     const updateTasks = [...tasks]
     const index = updateTasks.findIndex(
-      (task) => task.text === text)
+      (task) => task.text === text
+    )
 
     if (index !== -1) {
       updateTasks[index].completed = true
-      setStorage(updateTasks)
+      setTasks(updateTasks)
     } else {
       console.error(`Task with text "${text} not found"`)
     }
@@ -58,11 +58,12 @@ function App() {
   const deleteTask = (text) => {
     const updateTasks = [...tasks]
     const index = updateTasks.findIndex(
-      (task) => task.text == text)
+      (task) => task.text == text
+    )
     
     if (index !== -1) {
       updateTasks.splice(index, 1)
-      setStorage(updateTasks)
+      setTasks(updateTasks)
     } else {
       console.error(`Task with text "${text} not found"`)
     }
