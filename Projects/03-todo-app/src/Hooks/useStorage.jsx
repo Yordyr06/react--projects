@@ -25,7 +25,7 @@ export function useStorage(storage, initialStorage) {
         setLoading(false)
         setError(true)
       }
-    }, 2000)
+    }, 5000)
   }, [])
 
   const setStorage = (newStorage) => {

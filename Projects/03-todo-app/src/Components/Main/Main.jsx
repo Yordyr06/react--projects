@@ -1,3 +1,6 @@
+// import { EmptyBox } from './EmptyBox'
+// import { Error } from './Error'
+import { MainLoader } from './MainLoader'
 import { Tasks } from './Tasks'
 
 export function Main({
@@ -14,12 +17,12 @@ export function Main({
       w-full mt-5 
     ">
       <section>
-        {loading && <p>Loading ...</p>}
-        {error && <p>Error</p>}
+        {loading && <MainLoader />}
+        { /*{error && <Error />}
         {
           (!loading && getTasks.length === 0)
-            && <p>Add a new task!</p>
-        }
+            && <EmptyBox />
+        } */}
 
         <Tasks
           key={tasks.text}
