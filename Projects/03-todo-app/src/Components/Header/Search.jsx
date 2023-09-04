@@ -1,4 +1,9 @@
-export function Search({ value, setFilter }) {
+import { useContext } from 'react'
+import { TaskContext } from '../../Hooks/useContext'
+
+export function Search() {
+  const { value, setFilter } = useContext(TaskContext)
+
   return (
     <div className="
       flex gap-3 bg-transparent justify-evenly border-2 border-sky-500 

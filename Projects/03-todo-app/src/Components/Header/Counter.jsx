@@ -1,4 +1,12 @@
-export function Counter({ completed, totalTasks}) {
+import { useContext } from 'react'
+import { TaskContext } from '../../Hooks/useContext'
+
+export function Counter() {
+  const {
+    completed,
+    totalTasks
+  } = useContext(TaskContext)
+  
   return (
     <h2 className="
       text-lg

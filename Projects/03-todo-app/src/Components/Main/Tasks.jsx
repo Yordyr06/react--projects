@@ -1,8 +1,13 @@
-export function Tasks({
-  getTasks,
-  successTask,
-  deleteTask
-}) {
+import { useContext } from "react"
+import { TaskContext } from '../../Hooks/useContext' 
+
+export function Tasks() {
+  const {
+    getTasks,
+    successTask,
+    deleteTask
+  } = useContext(TaskContext)
+
   return (
     <ul className="
     flex flex-col m-auto px-4 justify-center gap-2

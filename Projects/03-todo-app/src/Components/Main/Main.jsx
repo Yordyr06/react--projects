@@ -1,38 +1,31 @@
-// import { EmptyBox } from './EmptyBox'
-// import { Error } from './Error'
+
+import { useContext } from 'react'
+import { TaskContext } from '../../Hooks/useContext'
 import { MainLoader } from './MainLoader'
+import { EmptyBox } from './EmptyBox'
+import { Error } from './Error'
 import { Tasks } from './Tasks'
 
-export function Main({
-  loading,
-  error,
-  tasks,
-  setTasks,
-  getTasks,
-  successTask,
-  deleteTask
-}) {
+export function Main() {
+  const {
+    loading,
+    error,
+    getTasks,
+  } = useContext(TaskContext)
+
   return(
     <main className="
       w-full mt-5 
     ">
       <section>
         {loading && <MainLoader />}
-        { /*{error && <Error />}
+        {error && <Error />}
         {
           (!loading && getTasks.length === 0)
             && <EmptyBox />
-        } */}
+        }
 
-        <Tasks
-          key={tasks.text}
-          text={tasks.text}
-          completed={tasks.completed}
-          getTasks={getTasks}
-          setTasks={setTasks}
-          successTask={successTask}
-          deleteTask={deleteTask}
-        />
+        <Tasks />
       </section>
     </main>
   )
