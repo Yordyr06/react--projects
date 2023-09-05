@@ -1,12 +1,12 @@
 import { useContext } from "react"
-import { TaskContext } from '../../Hooks/useContext' 
+import { AppContext } from '../../Utils/AppContext' 
 
 export function Tasks() {
   const {
     getTasks,
     successTask,
     deleteTask
-  } = useContext(TaskContext)
+  } = useContext(AppContext)
 
   return (
     <ul className="

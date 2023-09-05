@@ -1,7 +1,7 @@
 import { useState, createContext } from "react";
-import { useStorage } from "./useStorage"
+import { useStorage } from "./AppStorage"
 
-const TaskContext = createContext();
+const AppContext = createContext();
 function TaskProvider({children}) {
   const { 
     data: tasks, 
@@ -10,6 +10,7 @@ function TaskProvider({children}) {
     error 
   }  = useStorage('TASK_V1', [])
   const [ value, setFilter ] = useState('')
+  const [ getModal, setModal ] = useState(false)
 
   const tasksCompleted = tasks.filter(
     task => !!task.completed 
@@ -51,8 +52,17 @@ function TaskProvider({children}) {
     }
   }
 
+  const addTask = (text) => {
+    const updateTasks = [...tasks]
+    updateTasks.push({
+      text,
+      completed: false
+    })
+    setTasks(updateTasks)
+  }
+
   return (
-    <TaskContext.Provider value={{
+    <AppContext.Provider value={{
       loading,
       error,
       tasksCompleted,
@@ -64,10 +74,13 @@ function TaskProvider({children}) {
       getTasks,
       successTask,
       deleteTask,
+      addTask,
+      getModal,
+      setModal
     }}>
       {children}
-    </TaskContext.Provider>
+    </AppContext.Provider>
   )
 }
 
-export { TaskContext, TaskProvider }
+export { AppContext, TaskProvider }

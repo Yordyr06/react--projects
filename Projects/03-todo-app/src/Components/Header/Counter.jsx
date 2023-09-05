@@ -1,11 +1,11 @@
 import { useContext } from 'react'
-import { TaskContext } from '../../Hooks/useContext'
+import { AppContext } from '../../Utils/AppContext'
 
 export function Counter() {
   const {
     completed,
     totalTasks
-  } = useContext(TaskContext)
+  } = useContext(AppContext)
   
   return (
     <h2 className="

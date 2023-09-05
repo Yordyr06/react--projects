@@ -1,6 +1,6 @@
 
 import { useContext } from 'react'
-import { TaskContext } from '../../Hooks/useContext'
+import { AppContext } from '../../Utils/AppContext'
 import { MainLoader } from './MainLoader'
 import { EmptyBox } from './EmptyBox'
 import { Error } from './Error'
@@ -11,7 +11,7 @@ export function Main() {
     loading,
     error,
     getTasks,
-  } = useContext(TaskContext)
+  } = useContext(AppContext)
 
   return(
     <main className="

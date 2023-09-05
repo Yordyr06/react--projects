@@ -1,8 +1,8 @@
 import { useContext } from 'react'
-import { TaskContext } from '../../Hooks/useContext'
+import { AppContext } from '../../Utils/AppContext'
 
 export function Search() {
-  const { value, setFilter } = useContext(TaskContext)
+  const { value, setFilter } = useContext(AppContext)
 
   return (
     <div className="

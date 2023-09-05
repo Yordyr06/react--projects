@@ -29,7 +29,7 @@ export function useStorage(storage, initialStorage) {
   }, [])
 
   const setStorage = (newStorage) => {
-    localStorage.setItem(getStorage, JSON.stringify(newStorage))
+    localStorage.setItem(storage, JSON.stringify(newStorage))
     setData(newStorage)
   }
 
