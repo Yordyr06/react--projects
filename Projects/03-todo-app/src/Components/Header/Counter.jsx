@@ -3,7 +3,7 @@ import { AppContext } from '../../Utils/AppContext'
 
 export function Counter() {
   const {
-    completed,
+    tasksCompleted,
     totalTasks
   } = useContext(AppContext)
   
@@ -11,7 +11,7 @@ export function Counter() {
     <h2 className="
       text-lg
     ">
-      You have completed <span className="font-bold">{completed}</span> of <span className="font-bold">{totalTasks}</span> Task
+      You have completed <span className="font-bold">{tasksCompleted}</span> of <span className="font-bold">{totalTasks}</span> Task
     </h2>
   )
 }
