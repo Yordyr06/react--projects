@@ -71,7 +71,7 @@ const NavBar = () => {
 
   return (
     <nav className="
-      flex flex-row w-full justify-between items-center fixed z-10 py-5 px-8 text-sm font-light
+      flex flex-row w-full justify-between items-center top-0 fixed z-10 py-5 px-8 text-sm font-light
     ">
       <ul className="
         flex flex-row items-center gap-3

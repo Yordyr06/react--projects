@@ -5,6 +5,7 @@ import { MyOrder } from '../MyOrder'
 import { MyOrders } from '../MyOrders'
 import { SingIn } from '../SingIn'
 import { NotFound } from '../NotFound'
+import { Layout } from "../../Components/Layout"
 import { NavBar } from '../../Components/NavBar'
 import './index.css'
 
@@ -24,8 +25,10 @@ const AppRoutes = () => {
 const App = () => {
   return (
     <BrowserRouter>
-      <AppRoutes />
       <NavBar />
+      <Layout>
+        <AppRoutes />
+      </Layout>
     </BrowserRouter>
   )
 }
