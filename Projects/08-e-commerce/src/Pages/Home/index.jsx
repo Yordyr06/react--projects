@@ -1,8 +1,11 @@
+import { Card } from "../../Components/Card/Cars"
+
 function Home() {
   return (
-    <p>
+    <div>
       Home
-    </p>
+      <Card />
+    </div>
   )
 }
 
