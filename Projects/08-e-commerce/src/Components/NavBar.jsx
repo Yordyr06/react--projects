@@ -1,6 +1,10 @@
+import { useContext } from "react"
 import { NavLink } from "react-router-dom"
+import { Global } from "../Utils/Contexts/Global"
 
 const NavBar = () => {
+  const { count } = useContext(Global)
+
   const leftMenu = [
     {
       to: '/',
@@ -71,7 +75,7 @@ const NavBar = () => {
 
   return (
     <nav className="
-      flex flex-row w-full justify-between items-center top-0 fixed z-10 py-5 px-8 text-sm font-light
+      flex flex-row w-full bg-zinc-950 justify-between items-center top-0 fixed z-10 py-5 px-8 text-sm font-light
     ">
       <ul className="
         flex flex-row items-center gap-3
@@ -106,7 +110,7 @@ const NavBar = () => {
                 to={link.to}
                 className={({isActive}) => isActive && index !== 0 ? selectedOption : undefined}
               >
-                {link.text}
+                {link.text === '🛒' ? `${link.text} ${count}` : `${link.text}`}
               </NavLink>
             </li>
           ))

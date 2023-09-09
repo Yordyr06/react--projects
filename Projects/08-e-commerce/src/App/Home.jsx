@@ -20,17 +20,16 @@ function Home() {
   }, [])
   
   return (
-    <div>
-      Home
+    <>
       {
-        products?.map(product => (
+        products && products?.map((product) => (
           <Card 
             key={product.id}
             data={product} 
           />
         ))
       }
-    </div>
+    </>
   )
 }
 
