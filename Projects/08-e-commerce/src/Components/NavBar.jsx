@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { NavLink } from "react-router-dom"
+import { HiOutlineShoppingBag } from "react-icons/hi2"
 import { Global } from "../Utils/Contexts/Global"
 
 const NavBar = () => {

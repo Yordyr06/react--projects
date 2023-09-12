@@ -1,11 +1,15 @@
 import { useContext } from "react"
+import { HiPlus } from "react-icons/hi2"
 import { Global } from "../Utils/Contexts/Global"
 
 const Card = (data) => {
   const { count, setCount } = useContext(Global)
+  const { toggleDetail } = useContext(Global)
 
   return (
-    <div className="
+    <div 
+      onClick={() => toggleDetail()}
+      className="
       bg-white cursor-pointer w-56 h-60 rounded-lg
     ">
       <figure className="
@@ -21,7 +25,7 @@ const Card = (data) => {
           onClick={() => setCount(count + 1)}
           className="
           absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1
-        ">+</button>
+        "><HiPlus className="h-6 w-6 text-black"></HiPlus></button>
       </figure>
       <p className="
         flex justify-between text-black mx-2 gap-4

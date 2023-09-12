@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
-import { Card } from "../Components/Card"
 import { API_URL } from "../Utils/Api"
+import { Card } from "../Components/Card"
+import { Detail } from "../Components/Detail"
 
 function Home() {
   const [ products, setProducts ] = useState(null)
@@ -29,6 +30,8 @@ function Home() {
           />
         ))
       }
+
+      <Detail />
     </>
   )
 }
