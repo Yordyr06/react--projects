@@ -12,19 +12,38 @@ const GlobalProvider = ({ children }) => {
   const openDetail = () => setIsDetailOpen(true)
   const closeDetail = () => setIsDetailOpen(false)
   
+  // CheckOut · Open/Close
+  const [isCheckOutOpen, setIsCheckOutOpen] = useState(false)
+  const openCheckOut = () => setIsCheckOutOpen(true)
+  const closeCheckOut = () => setIsCheckOutOpen(false)
+  
   // Product Detail · Show Product
   const [productToShow, setProductToShow] = useState({})
+
+  // Shopping Cart · Add products to cart
+  const [cartProducts, setCartProducts] = useState([])
+
 
   return (
     <Global.Provider value={{
       count,
       setCount,
+
       isDetailOpen,
       setIsDetailOpen,
       openDetail,
       closeDetail,
+
+      isCheckOutOpen,
+      setIsCheckOutOpen,
+      openCheckOut,
+      closeCheckOut,
+      
       productToShow,
-      setProductToShow
+      setProductToShow,
+      
+      cartProducts, 
+      setCartProducts,
     }}>
       {children}
     </Global.Provider>

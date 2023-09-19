@@ -8,6 +8,7 @@ import { SingIn } from './SingIn'
 import { NotFound } from './NotFound'
 import { Layout } from "../Components/Layout"
 import { NavBar } from '../Components/NavBar'
+import { CheckOut } from '../Components/checkOut'
 import './App.css'
 
 const AppRoutes = () => {
@@ -31,6 +32,7 @@ const App = () => {
         <Layout>
           <AppRoutes />
         </Layout>
+        <CheckOut />
       </BrowserRouter>
     </GlobalProvider>
   )

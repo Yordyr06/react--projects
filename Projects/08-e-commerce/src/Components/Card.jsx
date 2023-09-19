@@ -3,17 +3,31 @@ import { HiPlus } from "react-icons/hi2"
 import { Global } from "../Utils/Contexts/Global"
 
 const Card = (data) => {
-  const { count, setCount } = useContext(Global)
-  const { openDetail, setProductToShow } = useContext(Global)
+  const { 
+    count, setCount, 
+    openDetail, closeDetail, setProductToShow, 
+    cartProducts, setCartProducts,
+    openCheckOut, closeCheckOut, isCheckOutOpen
+  } = useContext(Global)
 
-  const  showProduct = (product) => {
-    openDetail()
+  const showProduct = (product) => {
+    closeCheckOut()
     setProductToShow(product)
+    openDetail()
+  }
+
+  const addProducts = (product) => {
+    closeDetail()
+    setCartProducts([...cartProducts, product])
+    openCheckOut()
   }
 
   return (
     <div 
-      onClick={() => showProduct(data.data)}
+      onClick={(event) => {
+        event.stopPropagation()  
+        showProduct(data.data)
+      }}
       className="
       bg-white cursor-pointer w-56 h-60 rounded-lg
     ">
@@ -30,6 +44,7 @@ const Card = (data) => {
           onClick={(event) => {
             event.stopPropagation()
             setCount(count + 1)
+            addProducts(data.data)
           }}
           className="
           absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1

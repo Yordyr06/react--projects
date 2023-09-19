@@ -7,7 +7,7 @@ const Detail = () => {
   
   return(
     <aside className={`
-      ${ isDetailOpen ? null : 'hidden'}
+      ${ isDetailOpen ? null : 'hidden' }
       flex flex-col fixed right-0 border text-black border-black rounded-l-lg bg-white w-[360px] h-[calc(100vh-68px)]
     `}>
       <div className="flex justify-between items-center p-6">
