@@ -4,7 +4,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi2"
 import { Global } from "../Utils/Contexts/Global"
 
 const NavBar = () => {
-  const { count } = useContext(Global)
+  const { cartProducts } = useContext(Global)
 
   const leftMenu = [
     {
@@ -111,7 +111,7 @@ const NavBar = () => {
                 to={link.to}
                 className={({isActive}) => isActive && index !== 0 ? selectedOption : undefined}
               >
-                {link.text === '🛒' ? `${link.text} ${count}` : `${link.text}`}
+                {link.text === '🛒' ? `${link.text} ${cartProducts.length}` : `${link.text}`}
               </NavLink>
             </li>
           ))

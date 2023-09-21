@@ -1,10 +1,9 @@
 import { useContext } from "react"
-import { HiPlus } from "react-icons/hi2"
+import { HiPlus, HiCheck } from "react-icons/hi2"
 import { Global } from "../Utils/Contexts/Global"
 
 const Card = ({ data }) => {
   const { 
-    count, setCount, 
     openDetail, closeDetail, setProductToShow, 
     cartProducts, setCartProducts,
     openCheckOut, closeCheckOut,
@@ -20,6 +19,34 @@ const Card = ({ data }) => {
     closeDetail()
     setCartProducts([...cartProducts, product])
     openCheckOut()
+  }
+
+  const renderIcon = (id) => {
+    const isInCart = cartProducts.filter(product => product.id === id).length != 0
+    
+    if (isInCart) {
+      return (
+        <button 
+          className="
+          absolute top-0 right-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 p-1
+        ">
+          <HiCheck className="h-6 w-6 text-green-700"></HiCheck>
+        </button>
+      )
+    } else {
+      return (
+        <button 
+          onClick={(event) => {
+            event.stopPropagation()
+            addProducts(data)
+          }}
+          className="
+          absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1
+        ">
+          <HiPlus className="h-6 w-6 text-black"></HiPlus>
+        </button>
+      )
+    }
   }
 
   return (
@@ -40,15 +67,9 @@ const Card = ({ data }) => {
         <img className="
           w-full h-full object-cover rounded-lg
         " src={data.image} alt="" />
-        <button 
-          onClick={(event) => {
-            event.stopPropagation()
-            setCount(count + 1)
-            addProducts(data)
-          }}
-          className="
-          absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1
-        "><HiPlus className="h-6 w-6 text-black"></HiPlus></button>
+
+        { renderIcon(data.id) }
+
       </figure>
       <p className="
         flex justify-between text-black mx-2 gap-4

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { API_URL } from "../Utils/Api"
 import { Card } from "../Components/Card"
 import { Detail } from "../Components/Detail"
+import { CheckOut } from "../Components/CheckOut"
 
 function Home() {
   const [ products, setProducts ] = useState(null)
@@ -32,6 +33,7 @@ function Home() {
       }
 
       <Detail />
+      <CheckOut />
     </>
   )
 }

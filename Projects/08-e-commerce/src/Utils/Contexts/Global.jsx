@@ -3,10 +3,6 @@ import { createContext, useState } from "react";
 const Global = createContext()
 
 const GlobalProvider = ({ children }) => {
-  // Shopping Cart · Increment Quantity
-  const [count, setCount] = useState(0)
-  
-  
   // Product Detail · Open/Close
   const [isDetailOpen, setIsDetailOpen] = useState(false)
   const openDetail = () => setIsDetailOpen(true)
@@ -26,9 +22,6 @@ const GlobalProvider = ({ children }) => {
 
   return (
     <Global.Provider value={{
-      count,
-      setCount,
-
       isDetailOpen,
       setIsDetailOpen,
       openDetail,
