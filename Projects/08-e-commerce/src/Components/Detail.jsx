@@ -15,7 +15,8 @@ const Detail = () => {
         <div className="cursor-pointer">
           <HiXMark 
             onClick={() => closeDetail()}
-            className="h-6 w-6" />
+            className="h-6 w-6"
+          />
         </div>
       </div> 
 

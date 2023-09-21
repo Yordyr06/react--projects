@@ -2,12 +2,12 @@ import { useContext } from "react"
 import { HiPlus } from "react-icons/hi2"
 import { Global } from "../Utils/Contexts/Global"
 
-const Card = (data) => {
+const Card = ({ data }) => {
   const { 
     count, setCount, 
     openDetail, closeDetail, setProductToShow, 
     cartProducts, setCartProducts,
-    openCheckOut, closeCheckOut, isCheckOutOpen
+    openCheckOut, closeCheckOut,
   } = useContext(Global)
 
   const showProduct = (product) => {
@@ -26,7 +26,7 @@ const Card = (data) => {
     <div 
       onClick={(event) => {
         event.stopPropagation()  
-        showProduct(data.data)
+        showProduct(data)
       }}
       className="
       bg-white cursor-pointer w-56 h-60 rounded-lg
@@ -36,15 +36,15 @@ const Card = (data) => {
       ">
         <span className="
           absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5
-        "> {data.data.category} </span>
+        "> {data.category} </span>
         <img className="
           w-full h-full object-cover rounded-lg
-        " src={data.data.image} alt="" />
+        " src={data.image} alt="" />
         <button 
           onClick={(event) => {
             event.stopPropagation()
             setCount(count + 1)
-            addProducts(data.data)
+            addProducts(data)
           }}
           className="
           absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1
@@ -55,10 +55,10 @@ const Card = (data) => {
       ">
         <span className="
           text-sm font-light truncate 
-        ">{data.data.title}</span>
+        ">{data.title}</span>
         <span className="
           text-lg font-medium
-        ">${data.data.price}</span>
+        ">${data.price}</span>
       </p>
     </div>
   )
