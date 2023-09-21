@@ -19,6 +19,8 @@ const GlobalProvider = ({ children }) => {
   // Shopping Cart · Add products to cart
   const [cartProducts, setCartProducts] = useState([])
 
+  // Shopping Cart · Orders list
+  const [order, setOrder] = useState([])
 
   return (
     <Global.Provider value={{
@@ -37,6 +39,9 @@ const GlobalProvider = ({ children }) => {
       
       cartProducts, 
       setCartProducts,
+
+      order,
+      setOrder
     }}>
       {children}
     </Global.Provider>

@@ -5,11 +5,27 @@ import { getTotal } from "../Utils/getTotal"
 import { OrderCard } from "./OrderCard"
 
 const CheckOut = () => {
-  const { isCheckOutOpen, closeCheckOut, cartProducts, setCartProducts } = useContext(Global)
+  const { 
+    isCheckOutOpen, closeCheckOut,
+    cartProducts, setCartProducts,
+    order, setOrder 
+  } = useContext(Global)
 
   const removeProduct = (id) => {
     const filterProduct = cartProducts.filter(product => product.id != id)
     setCartProducts(filterProduct)
+  }
+
+  const purchase = () => {
+    const newOrder = {
+      date: '09.21.2023',
+      products: cartProducts,
+      totalProduct: cartProducts.length,
+      totalPrice: getTotal(cartProducts)
+    }
+
+    setOrder([...order, newOrder])
+    setCartProducts([])
   }
 
   return(
@@ -25,7 +41,7 @@ const CheckOut = () => {
             className="cursor-pointer h-6 w-6" />
         </div>
       </div>
-      <div className="px-6 overflow-y-scroll">
+      <div className="flex-1 px-6 overflow-y-scroll">
       {
         cartProducts.map(product => (
           <OrderCard 
@@ -40,11 +56,18 @@ const CheckOut = () => {
       }
       </div>
 
-      <div className="px-6">
-        <p className="flex justify-between items-center">
+      <div className="px-6 mb-6">
+        <p className="flex justify-between items-center mb-2">
           <span>Total:</span>
           <span className="font-medium text-xl">{`$${getTotal(cartProducts)}`}</span>
         </p>
+
+        <button
+          onClick={() => purchase()}
+          className="w-full bg-black text-white py-3 rounded-lg"
+        >
+          Purchase
+        </button>
       </div>
     </aside>
   )

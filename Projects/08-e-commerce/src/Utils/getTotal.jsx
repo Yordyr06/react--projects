@@ -11,7 +11,11 @@ const getTotal = (products) => {
       .map(product => product.price)
       .reduce((total, price) => total + price)
     )
-  } 
+  } else {
+    return (
+      0
+    )
+  }
 }
 
 export { getTotal }
