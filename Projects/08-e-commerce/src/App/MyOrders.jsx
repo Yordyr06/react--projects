@@ -1,28 +1,28 @@
 import { useContext } from "react"
-import { Global } from "../Utils/Contexts/Global"
-import { OrderCard } from "../Components/OrderCard"
+import { Link } from "react-router-dom"
+import { Global } from "../Utils/Contexts/Global" 
+import { OrdersCard } from "../Components/OrdersCard"
 
 function MyOrders() {
   const { order } = useContext(Global)
-  console.log(order.slice(-1)[0])
 
   return (
     <div>
-      MyOrders
+      <div className="
+        flex items-center justify-center relative w-80
+      ">
+        <h1>My Orders</h1>
+      </div>
+
       {
-        <div className="flex flex-col mx-auto w-80">
-          {
-            order?.slice(-1)[0]?.products?.map(product => (
-              <OrderCard  
-                key={product.id}
-                id={product.id}
-                title={product.title}
-                image={product.image}
-                price={product.price}
-              />
-            ))
-          }
-        </div>
+        order?.map?.((order, index) => (
+          <Link key={index} to={`/my-orders/${order.id}`}>
+            <OrdersCard 
+              totalProducts={order.totalProducts}
+              totalPrice={order.totalPrice}
+            />
+          </Link>
+        ))
       }
     </div>
   )

@@ -64,7 +64,7 @@ const CheckOut = () => {
           <span className="font-medium text-xl">{`$${getTotal(cartProducts)}`}</span>
         </p>
 
-        <Link to="/my-orders/last">
+        <Link to="/my-order/last">
           <button
             onClick={() => purchase()}
             className="w-full bg-black text-white py-3 rounded-lg"
