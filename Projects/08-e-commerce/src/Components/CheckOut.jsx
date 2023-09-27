@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import { Link } from "react-router-dom"
 import { HiPlus, HiXMark } from "react-icons/hi2"
 import { Global } from "../Utils/Contexts/Global"
 import { getTotal } from "../Utils/getTotal"
@@ -26,6 +27,7 @@ const CheckOut = () => {
 
     setOrder([...order, newOrder])
     setCartProducts([])
+    closeCheckOut()
   }
 
   return(
@@ -42,18 +44,18 @@ const CheckOut = () => {
         </div>
       </div>
       <div className="flex-1 px-6 overflow-y-scroll">
-      {
-        cartProducts.map(product => (
-          <OrderCard 
-            key={product.id}
-            id={product.id}
-            title={product.title}
-            image={product.image}
-            price={product.price}
-            removeProduct={removeProduct}
-          />
-        ))
-      }
+        {
+          cartProducts.map(product => (
+            <OrderCard 
+              key={product.id}
+              id={product.id}
+              title={product.title}
+              image={product.image}
+              price={product.price}
+              removeProduct={removeProduct}
+            />
+          ))
+        }
       </div>
 
       <div className="px-6 mb-6">
@@ -62,12 +64,14 @@ const CheckOut = () => {
           <span className="font-medium text-xl">{`$${getTotal(cartProducts)}`}</span>
         </p>
 
-        <button
-          onClick={() => purchase()}
-          className="w-full bg-black text-white py-3 rounded-lg"
-        >
-          Purchase
-        </button>
+        <Link to="/my-orders/last">
+          <button
+            onClick={() => purchase()}
+            className="w-full bg-black text-white py-3 rounded-lg"
+          >
+            Purchase
+          </button>
+        </Link>
       </div>
     </aside>
   )
