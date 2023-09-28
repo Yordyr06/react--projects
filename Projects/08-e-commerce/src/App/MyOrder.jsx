@@ -1,32 +1,34 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
-import { HiMiniArrowTopRightOnSquare } from "react-icons/hi2"
+import { HiChevronRight } from "react-icons/hi2"
 import { Global } from "../Utils/Contexts/Global"
 import { OrderCard } from "../Components/OrderCard"
 
-// HiArrowTopRightOnSquare
-// HiMiniArrowTopRightOnSquare
-// HiOutlineArrowTopRightOnSquare
-
 function MyOrder() {
   const { order } = useContext(Global)
+  const currentPath = window.location.pathname
+  let index = currentPath.substring(currentPath.indexOf('s') + 2)
+  if (index === 'last') index = order?.length - 1
 
   return (
     <div>
       <div className="
-        flex items-center justify-center relative w-80 mb-6
+        flex items-center justify-center relative w-80 my-4
       ">
         <Link to="/my-orders" className="absolute right-0">
-          <HiMiniArrowTopRightOnSquare className="
-            h-6 w-6 cursor-pointer hover:text-black
+          <HiChevronRight className="
+            h-6 w-6 cursor-pointer
           "/>
         </Link>
-        <h1>My Order</h1>
+        <h1 className="font-medium text-xl">My Order</h1>
       </div>
       
-      <div className="flex flex-col mx-auto w-80">
+      <div className="
+        flex flex-col mx-auto border border-slate-50 rounded-lg
+        p-4 w-80 shadow-lg
+        ">
         {
-          order?.slice(-1)[0]?.products?.map(product => (
+          order?.[index]?.products?.map(product => (
             <OrderCard  
               key={product.id}
               id={product.id}

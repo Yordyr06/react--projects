@@ -56,7 +56,7 @@ const Card = ({ data }) => {
         showProduct(data)
       }}
       className="
-      bg-white cursor-pointer w-56 h-60 rounded-lg
+      bg-white cursor-pointer w-56 h-60 rounded-lg mt-4
     ">
       <figure className="
         relative mb-2 w-full h-4/5 

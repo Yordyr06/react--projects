@@ -21,7 +21,7 @@ const CheckOut = () => {
     const newOrder = {
       date: '09.21.2023',
       products: cartProducts,
-      totalProduct: cartProducts.length,
+      totalProducts: cartProducts.length,
       totalPrice: getTotal(cartProducts)
     }
 
@@ -64,7 +64,7 @@ const CheckOut = () => {
           <span className="font-medium text-xl">{`$${getTotal(cartProducts)}`}</span>
         </p>
 
-        <Link to="/my-order/last">
+        <Link to="/my-orders/last">
           <button
             onClick={() => purchase()}
             className="w-full bg-black text-white py-3 rounded-lg"
