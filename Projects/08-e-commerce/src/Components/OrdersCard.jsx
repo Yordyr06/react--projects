@@ -16,7 +16,7 @@ const OrdersCard = props => {
           <span className="flex font-light items-center gap-2"><HiCalendarDays className="h-4 w-4"/>09.21.2023</span>
           <span className="flex font-light items-center gap-2"><HiShoppingBag className="h-4 w-4"/>{totalProducts} articles</span>
         </p>
-        <p className="flex items-center gap-2">
+        <p className="flex items-center gap-2 truncate">
           <span className="font-medium text-2xl">${totalPrice}</span>
           <HiChevronRight className="h-6 w-6"/>
         </p>
