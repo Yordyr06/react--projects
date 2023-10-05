@@ -6,6 +6,11 @@ const Global = createContext()
 const GlobalProvider = ({ children }) => {
   // Get Products
   const [ products, setProducts ] = useState(null)
+  const [ filteredProducts, setFilteredProducts ] = useState(null)
+
+  // Search Input
+  const [searchValue, setSearchValue] = useState('')
+  const [searchByCategory, setSearchByCategory] = useState(null)
 
   // Product Detail · Open/Close
   const [isDetailOpen, setIsDetailOpen] = useState(false)
@@ -26,10 +31,6 @@ const GlobalProvider = ({ children }) => {
   // Shopping Cart · Orders list
   const [order, setOrder] = useState([])
 
-  // Search Input
-  const [searchValue, setSearchValue] = useState(null)
-  console.log('setSearchValue: ', searchValue)
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -44,10 +45,30 @@ const GlobalProvider = ({ children }) => {
     fetchData()
   }, [])
 
+
+  
+  // Filter Products
+  const filterFn = (products, searchValue) => {
+    return products?.filter(product => product.title.toLowerCase().includes(searchValue.toLowerCase()))
+  }
+
+  // Filter by Category
+  const filterByCategory = (products, searchByCategory) => {
+    return products?.filter(product => product.category.toLowerCase().includes(searchByCategory.toLowerCase()))
+  }
+
+
+  useEffect(() => {
+    if (searchValue) setFilteredProducts(filterFn(products, searchValue))
+    if (searchByCategory) setSearchByCategory(filterByCategory(products, searchByCategory))
+  }, [products, searchValue])
+
   return (
     <Global.Provider value={{
       products,
       setProducts,
+      filteredProducts,
+      setFilteredProducts,
 
       isDetailOpen,
       setIsDetailOpen,
@@ -69,7 +90,10 @@ const GlobalProvider = ({ children }) => {
       setOrder,
 
       searchValue,
-      setSearchValue
+      setSearchValue,
+      filterFn,
+      searchByCategory,
+      setSearchByCategory
     }}>
       {children}
     </Global.Provider>

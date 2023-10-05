@@ -5,19 +5,29 @@ import { Detail } from "../Components/Detail"
 import { CheckOut } from "../Components/CheckOut"
 
 function Home() {
-  const { products } = useContext(Global)
+  const { products, filteredProducts, searchValue } = useContext(Global)
   
+  const renderView = () => {
+    const productsToRender = searchValue?.length > 0
+    ? filteredProducts
+    : products
+
+    if (productsToRender?.length > 0) {
+      return productsToRender && productsToRender?.map((product) => (
+        <Card 
+          key={product.id}
+          data={product} 
+        />
+      ))
+    } else {
+      return <p>Product not found</p>
+    }
+  }
+
   
   return (
     <>
-      {
-        products && products?.map((product) => (
-          <Card 
-            key={product.id}
-            data={product} 
-          />
-        ))
-      }
+      { renderView() }
 
       <Detail />
       <CheckOut />

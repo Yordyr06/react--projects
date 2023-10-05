@@ -4,44 +4,47 @@ import { HiOutlineShoppingBag } from "react-icons/hi2"
 import { Global } from "../Utils/Contexts/Global"
 
 const NavBar = () => {
-  const { cartProducts } = useContext(Global)
+  const { cartProducts, setSearchByCategory } = useContext(Global)
+
+  const handleCategoryClick = category => setSearchByCategory(category)
 
   const leftMenu = [
     {
       to: '/',
       text: 'Shopi',
-      className: 'font-semibold text-lg'
+      onClick: () => handleCategoryClick(null),
+      className: 'font-semibold text-lg',
     },
     {
       to: '/',
       text: 'All',
-      className: ''
+      onClick: () => handleCategoryClick(null),
+      className: '',
     },
     {
-      to: '/clothes',
-      text: 'Clothes',
-      className: ''
+      to: '/man-clothing',
+      text: `Man's Clothing`,
+      onClick: () => handleCategoryClick(`men's clothing`),
+      className: '',
+    },
+    {
+      to: '/woman-clothing',
+      text: `Woman's Clothing`,
+      onClick: () => handleCategoryClick(`women's clothing`),
+      className: '',
     },
     {
       to: '/electronics',
       text: 'Electronics',
-      className: ''
+      onClick: () => handleCategoryClick(`electronics`),
+      className: '',
     },
     {
-      to: '/furnitures',
-      text: 'Furnitures',
-      className: ''
+      to: '/jewelry',
+      text: 'Jewelry',
+      onClick: () => handleCategoryClick(`jewelery`),
+      className: '',
     },
-    {
-      to: '/toys',
-      text: 'Toys',
-      className: ''
-    },
-    {
-      to: '/others',
-      text: 'Others',
-      className: ''
-    }
   ]
 
   const rightMenu = [
@@ -89,6 +92,7 @@ const NavBar = () => {
             >
               <NavLink 
                 to={link.to}
+                onClick={link.onClick}
                 className={({isActive}) => isActive && index !== 0 ? selectedOption : undefined}
               >
                 { link.text }
