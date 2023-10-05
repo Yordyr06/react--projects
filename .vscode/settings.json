@@ -1,4 +1,8 @@
 {
   "editor.tabSize": 2,
-  "editor.renderWhitespace": "selection"
+  "editor.renderWhitespace": "selection",
+  "cSpell.ignoreWords": [
+    "Shopi",
+    "furnitures"
+  ]
 }
