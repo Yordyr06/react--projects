@@ -1,6 +1,4 @@
-import { Children } from 'react'
-
-export function Header({ Children }) {
+export function Header({ children }) {
   return (
     <header className="
       w-full flex flex-col text-center justify-center gap-4 my-8 
@@ -9,7 +7,7 @@ export function Header({ Children }) {
         text-3xl font-bold 
       ">To Do App</h1>
 
-      {Children}
+      {children}
     </header>
   )
 }

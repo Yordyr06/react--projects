@@ -1,13 +1,10 @@
-
-import { Children } from 'react'
-
-export function Main({ Children }) {
+export function Main({ children }) {
   return(
     <main className="
       w-full mt-5 
     ">
       <section>
-        { Children }
+        {children}
       </section>
     </main>
   )

@@ -9,6 +9,8 @@ import { Main } from './Components/Main/Main'
 import { MainLoader } from './Components/Main/MainLoader'
 import { Error } from './Components/Main/Error'
 import { EmptyBox } from './Components/Main/EmptyBox'
+import { Tasks } from './Components/Main/Tasks'
+
 
 import { Button } from './Components/Button/Button'
 import { TaskModal } from './Components/Button/TaskModal'
