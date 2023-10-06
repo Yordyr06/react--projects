@@ -1,10 +1,6 @@
-import { useContext } from 'react'
 import { HiSearch } from "react-icons/hi"
-import { AppContext } from '../../Utils/AppContext'
 
-export function Search() {
-  const { value, setFilter } = useContext(AppContext)
-
+export function Search({ value, setFilter }) {
   return (
     <div className="
       flex gap-3 bg-transparent py-2 justify-evenly border-2 border-sky-500 w-2/3 m-auto rounded-full transition ease-in-out hover:border-slate-900
