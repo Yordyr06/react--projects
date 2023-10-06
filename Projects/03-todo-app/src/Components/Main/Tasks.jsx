@@ -1,14 +1,6 @@
-import { useContext } from "react"
 import { HiOutlineCheckCircle, HiOutlineMinusCircle } from "react-icons/hi"
-import { AppContext } from '../../Utils/AppContext'
 
-export function Tasks() {
-  const {
-    getTasks,
-    successTask,
-    deleteTask
-  } = useContext(AppContext)
-
+export function Tasks({ getTasks, successTask, deleteTask }) {
   return (
     <ul className="
     flex flex-col m-auto px-4 justify-center gap-2

@@ -5,14 +5,29 @@ import { Header } from './Components/Header/Header'
 import { Counter } from './Components/Header/Counter'
 import { Search } from './Components/Header/Search'
 
-import { ModalPortal } from './Utils/ModalPortal'
 import { Main } from './Components/Main/Main'
+import { MainLoader } from './Components/Main/MainLoader'
+import { Error } from './Components/Main/Error'
+import { EmptyBox } from './Components/Main/EmptyBox'
+
 import { Button } from './Components/Button/Button'
 import { TaskModal } from './Components/Button/TaskModal'
 
+import { ModalPortal } from './Utils/ModalPortal'
+
 
 export function App() {
-  const { tasksCompleted, totalTasks, value, setFilter } = useTask()
+  const { 
+    tasksCompleted, 
+    totalTasks, 
+    value, 
+    setFilter, 
+    loading,
+    error,
+    getTasks,
+    successTask,
+    deleteTask,
+  } = useTask()
 
   return (
    <>
@@ -26,10 +41,23 @@ export function App() {
           value={value}
           setFilter={setFilter}
         />
-
       </Header>
 
-      <Main />
+      <Main>
+        {loading && <MainLoader />}
+        {error && <Error />}
+        {
+          (!loading && getTasks.length === 0)
+            && <EmptyBox />
+        }
+
+        <Tasks 
+          getTasks={getTasks}
+          successTask={successTask}
+          deleteTask={deleteTask}
+        />
+      </Main>
+
       <Button />
       <ModalPortal>
         <TaskModal />
