@@ -1,8 +1,7 @@
-import { useState, createContext } from "react";
-import { useStorage } from "./AppStorage"
+import { useState } from "react";
+import { useStorage } from "./useStorage"
 
-const AppContext = createContext();
-function TaskProvider({children}) {
+function useTask() {
   const { 
     data: tasks, 
     setStorage: setTasks,
@@ -62,7 +61,7 @@ function TaskProvider({children}) {
   }
 
   return (
-    <AppContext.Provider value={{
+    {
       loading,
       error,
       tasksCompleted,
@@ -77,10 +76,8 @@ function TaskProvider({children}) {
       addTask,
       getModal,
       setModal
-    }}>
-      {children}
-    </AppContext.Provider>
+    }
   )
 }
 
-export { AppContext, TaskProvider }
+export { useTask }
