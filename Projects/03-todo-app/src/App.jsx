@@ -27,6 +27,9 @@ export function App() {
     getTasks,
     successTask,
     deleteTask,
+    addTask,
+    getModal,
+    setModal,
   } = useTask()
 
   return (
@@ -58,9 +61,13 @@ export function App() {
         />
       </Main>
 
-      <Button />
+      <Button setModal={setModal} />
       <ModalPortal>
-        <TaskModal />
+        <TaskModal 
+          addTask={addTask}
+          getModal={getModal}
+          setModal={setModal}
+        />
       </ModalPortal>
     </>
   )

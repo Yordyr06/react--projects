@@ -1,10 +1,7 @@
 import { useState } from "react";
-import { useContext } from "react";
 import { HiOutlineCheckCircle, HiOutlineXCircle } from "react-icons/hi";
-import { AppContext } from "../../Utils/AppContext";
 
-function TaskModal() {
-  const { addTask, getModal, setModal } = useContext(AppContext)
+function TaskModal({ addTask, getModal, setModal }) {
   const [ newValue, setValue ] = useState('')
 
   const onSubmit = (event) => {
