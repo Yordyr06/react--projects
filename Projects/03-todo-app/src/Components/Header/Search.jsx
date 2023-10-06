@@ -18,7 +18,7 @@ export function Search() {
       </p>
       <input
         value={value}
-        onChange={() => setFilter(event.target.value)} 
+        onChange={(event) => setFilter(event.target.value)} 
         placeholder="What you want search?"
         className="
         text-gray-500 bg-inherit basis-4/5 text-start outline-none
