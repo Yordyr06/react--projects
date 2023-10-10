@@ -1,22 +1,35 @@
 export function Main({
   error,
   loading,
+  totalTasks,
   getTasks,
   onError,
   onLoading,
   onEmpty,
-  render
+  noResults,
+  renderTasks,
 }) {
+
+  const mainRender = () => {
+    if (error) {
+      return onError
+    } else if (loading) {
+      return onLoading
+    } else if (!loading && totalTasks === 0) {
+      return onEmpty
+    } else if (totalTasks != 0 && getTasks.length === 0) {
+      return noResults
+    } else {
+      return renderTasks
+    }
+  }
+
   return(
     <main className="
       w-full mt-5 
     ">
-      { error ? onError : null }
-      { loading ? onLoading : null}
-      { !loading && getTasks.length === 0 ? onEmpty : null }
-      
       <section>
-        { render }
+        { mainRender() }
       </section>
     </main>
   )

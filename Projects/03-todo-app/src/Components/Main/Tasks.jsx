@@ -3,8 +3,8 @@ import { HiOutlineCheckCircle, HiOutlineMinusCircle } from "react-icons/hi"
 export function Tasks({ getTasks, successTask, deleteTask }) {
   return (
     <ul className="
-    flex flex-col m-auto px-4 justify-center gap-2
-    justify-items-center place-items-center hyphens-auto
+      flex flex-col m-auto px-4 justify-center gap-2
+      justify-items-center place-items-center hyphens-auto
     ">
       {
         getTasks.map(task => (

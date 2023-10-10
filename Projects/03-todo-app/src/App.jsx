@@ -10,6 +10,7 @@ import { Main } from './Components/Main/Main'
 import { MainLoader } from './Components/Main/MainLoader'
 import { Error } from './Components/Main/Error'
 import { EmptyBox } from './Components/Main/EmptyBox'
+import { NoResults } from './Components/Main/NoResults'
 import { Tasks } from './Components/Main/Tasks'
 
 
@@ -49,11 +50,13 @@ export function App() {
       <Main
         error={ error }
         loading={ loading }
+        totalTasks={totalTasks}
         getTasks={ getTasks }
         onError={ <Error /> }
         onLoading={ <MainLoader /> }
         onEmpty={ <EmptyBox /> }
-        render={
+        noResults={ < NoResults />}
+        renderTasks={
           <Tasks 
             getTasks={getTasks}
             successTask={successTask}
