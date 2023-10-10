@@ -20,7 +20,7 @@ export function Tasks({ getTasks, successTask, deleteTask }) {
               cursor-pointer hover:text-green-700
             `}> <HiOutlineCheckCircle size={'1.4rem'}/> </span>
             <p className={`
-              ${task.completed ? "line-through" : null }
+              ${task.completed ? "line-through" : "" }
             `}>{task.text}
             </p>
             <span

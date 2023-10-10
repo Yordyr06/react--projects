@@ -1,5 +1,6 @@
 import React from 'react'
 import { useTask } from './Utils/useTask'
+import { ModalPortal } from './Utils/ModalPortal'
 
 import { Header } from './Components/Header/Header'
 import { Counter } from './Components/Header/Counter'
@@ -14,9 +15,6 @@ import { Tasks } from './Components/Main/Tasks'
 
 import { Button } from './Components/Button/Button'
 import { TaskModal } from './Components/Button/TaskModal'
-
-import { ModalPortal } from './Utils/ModalPortal'
-
 
 export function App() {
   const { 
@@ -48,20 +46,21 @@ export function App() {
         />
       </Header>
 
-      <Main>
-        {loading && <MainLoader />}
-        {error && <Error />}
-        {
-          (!loading && getTasks.length === 0)
-            && <EmptyBox />
+      <Main
+        error={ error }
+        loading={ loading }
+        getTasks={ getTasks }
+        onError={ <Error /> }
+        onLoading={ <MainLoader /> }
+        onEmpty={ <EmptyBox /> }
+        render={
+          <Tasks 
+            getTasks={getTasks}
+            successTask={successTask}
+            deleteTask={deleteTask}
+          />
         }
-
-        <Tasks 
-          getTasks={getTasks}
-          successTask={successTask}
-          deleteTask={deleteTask}
-        />
-      </Main>
+      />
 
       <Button setModal={setModal} />
       <ModalPortal>
