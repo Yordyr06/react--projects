@@ -35,13 +35,16 @@ export function App() {
 
   return (
    <>
-      <Header>
+      <Header 
+        loading={loading}
+      >
         <Counter 
           tasksCompleted={tasksCompleted}
           totalTasks={totalTasks}
         />
 
         <Search 
+          loading={loading}
           value={value}
           setFilter={setFilter}
         />
