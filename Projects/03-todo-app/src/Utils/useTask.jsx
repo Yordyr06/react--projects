@@ -6,7 +6,8 @@ function useTask() {
     data: tasks, 
     setStorage: setTasks,
     loading,
-    error 
+    error,
+    syncStorage: syncTask
   }  = useStorage('TASK_V1', [])
   const [ value, setFilter ] = useState('')
   const [ getModal, setModal ] = useState(false)
@@ -75,7 +76,8 @@ function useTask() {
       deleteTask,
       addTask,
       getModal,
-      setModal
+      setModal,
+      syncTask
     }
   )
 }

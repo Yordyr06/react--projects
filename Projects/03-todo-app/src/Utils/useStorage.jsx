@@ -4,6 +4,8 @@ export function useStorage(storage, initialStorage) {
   const [data, setData] = useState(initialStorage)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+  const [syncData, setSyncData] = useState(true)
+
   
   useEffect(() => {
     setTimeout(() => {
@@ -20,18 +22,23 @@ export function useStorage(storage, initialStorage) {
         }
   
         setLoading(false)
-  
+        setSyncData(true)
       } catch(error) {
         setLoading(false)
         setError(true)
       }
     }, 5000)
-  }, [])
+  }, [syncData])
 
   const setStorage = (newStorage) => {
     localStorage.setItem(storage, JSON.stringify(newStorage))
     setData(newStorage)
   }
 
-  return { data, setStorage, loading, error }
+  const syncStorage = () => {
+    setLoading(true)
+    setSyncData(false)
+  }
+
+  return { data, setStorage, loading, error, syncStorage }
 }

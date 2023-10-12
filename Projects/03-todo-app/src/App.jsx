@@ -1,6 +1,7 @@
 import React from 'react'
 import { useTask } from './Utils/useTask'
 import { ModalPortal } from './Utils/ModalPortal'
+import { ChangeAlertWithListener } from './Utils/ChangeAlert'
 
 import { Header } from './Components/Header/Header'
 import { Counter } from './Components/Header/Counter'
@@ -31,6 +32,7 @@ export function App() {
     addTask,
     getModal,
     setModal,
+    syncTask,
   } = useTask()
 
   return (
@@ -76,6 +78,10 @@ export function App() {
           setModal={setModal}
         />
       </ModalPortal>
+
+      <ChangeAlertWithListener
+        syncTask={syncTask}
+      />
     </>
   )
 }
