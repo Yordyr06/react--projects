@@ -19,7 +19,7 @@ export function Main({
       return onEmpty
     } else if (totalTasks != 0 && getTasks.length === 0) {
       return noResults
-    } else {
+    } else if (!loading && !error) {
       return renderTasks
     }
   }

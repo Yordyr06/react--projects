@@ -1,6 +1,8 @@
-import { withListener } from "./withListener"
+import { useListener } from "./useListener"
 
-function ChangeAlert({ show, toggleShow }) {
+export function ChangeAlert({ syncTask }) {
+  const { show, toggleShow } = useListener(syncTask)
+
   if (show) {
     return (
       <div>
@@ -16,5 +18,3 @@ function ChangeAlert({ show, toggleShow }) {
     return null
   }
 }
-
-export const ChangeAlertWithListener = withListener(ChangeAlert);
