@@ -1,18 +1,10 @@
-import { useContext } from "react"
 import { HiOutlineCheckCircle, HiOutlineMinusCircle } from "react-icons/hi"
-import { AppContext } from '../../Utils/AppContext'
 
-export function Tasks() {
-  const {
-    getTasks,
-    successTask,
-    deleteTask
-  } = useContext(AppContext)
-
+export function Tasks({ getTasks, successTask, deleteTask }) {
   return (
     <ul className="
-    flex flex-col m-auto px-4 justify-center gap-2
-    justify-items-center place-items-center hyphens-auto
+      flex flex-col m-auto px-4 justify-center gap-2
+      justify-items-center place-items-center hyphens-auto
     ">
       {
         getTasks.map(task => (
@@ -28,7 +20,7 @@ export function Tasks() {
               cursor-pointer hover:text-green-700
             `}> <HiOutlineCheckCircle size={'1.4rem'}/> </span>
             <p className={`
-              ${task.completed ? "line-through" : null }
+              ${task.completed ? "line-through" : "" }
             `}>{task.text}
             </p>
             <span

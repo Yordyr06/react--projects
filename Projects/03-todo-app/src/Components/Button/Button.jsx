@@ -1,10 +1,6 @@
-import { useContext } from "react"
 import { HiOutlinePlusCircle } from "react-icons/hi"
-import { AppContext } from "../../Utils/AppContext"
 
-function Button() {
-  const { setModal } = useContext(AppContext)
-
+function Button({ setModal }) {
   return (
     <section className="
       min-w-max flex fixed bottom-5 inset-x-1/3 justify-center z-10 bg-blue-500 p-2.5 rounded-full font-medium text-sm

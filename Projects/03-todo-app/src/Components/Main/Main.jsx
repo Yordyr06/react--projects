@@ -1,31 +1,35 @@
+export function Main({
+  error,
+  loading,
+  totalTasks,
+  getTasks,
+  onError,
+  onLoading,
+  onEmpty,
+  noResults,
+  renderTasks,
+}) {
 
-import { useContext } from 'react'
-import { AppContext } from '../../Utils/AppContext'
-import { MainLoader } from './MainLoader'
-import { EmptyBox } from './EmptyBox'
-import { Error } from './Error'
-import { Tasks } from './Tasks'
-
-export function Main() {
-  const {
-    loading,
-    error,
-    getTasks,
-  } = useContext(AppContext)
+  const mainRender = () => {
+    if (error) {
+      return onError
+    } else if (loading) {
+      return onLoading
+    } else if (!loading && totalTasks === 0) {
+      return onEmpty
+    } else if (totalTasks != 0 && getTasks.length === 0) {
+      return noResults
+    } else if (!loading && !error) {
+      return renderTasks
+    }
+  }
 
   return(
     <main className="
       w-full mt-5 
     ">
       <section>
-        {loading && <MainLoader />}
-        {error && <Error />}
-        {
-          (!loading && getTasks.length === 0)
-            && <EmptyBox />
-        }
-
-        <Tasks />
+        { mainRender() }
       </section>
     </main>
   )
