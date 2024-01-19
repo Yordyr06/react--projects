@@ -61,7 +61,7 @@ const GlobalProvider = ({ children }) => {
   useEffect(() => {
     if (searchValue) setFilteredProducts(filterFn(products, searchValue))
     if (searchByCategory) setSearchByCategory(filterByCategory(products, searchByCategory))
-  }, [products, searchValue])
+  }, [products, searchValue, searchByCategory])
 
   return (
     <Global.Provider value={{

@@ -3,7 +3,7 @@ import { HiCalendarDays } from "react-icons/hi2"
 import { HiShoppingBag } from "react-icons/hi2"
 
 
-const OrdersCard = props => {
+const OrdersCard = (props) => {
   const { totalProducts, totalPrice } = props
 
   return(

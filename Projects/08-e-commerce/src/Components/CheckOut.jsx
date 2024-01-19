@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
-import { HiPlus, HiXMark } from "react-icons/hi2"
+import { HiXMark } from "react-icons/hi2"
 import { Global } from "../Utils/Contexts/Global"
 import { getTotal } from "../Utils/getTotal"
 import { OrderCard } from "./OrderCard"
@@ -19,7 +19,7 @@ const CheckOut = () => {
 
   const purchase = () => {
     const newOrder = {
-      date: '09.21.2023',
+      date: new Date(),
       products: cartProducts,
       totalProducts: cartProducts.length,
       totalPrice: getTotal(cartProducts)
@@ -43,7 +43,7 @@ const CheckOut = () => {
             className="cursor-pointer h-6 w-6" />
         </div>
       </div>
-      <div className="flex-1 px-6 overflow-y-scroll">
+      <div className="flex-2 px-6 overflow-y-scroll">
         {
           cartProducts.map(product => (
             <OrderCard 
